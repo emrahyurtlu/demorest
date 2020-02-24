@@ -1,5 +1,6 @@
-package com.company;
+package com.company.resource;
 
+import com.company.model.Alien;
 import com.company.repository.AlienRepo;
 
 import javax.ws.rs.*;
@@ -31,5 +32,18 @@ public class AlienResource {
     public void insertAlien(Alien alien) {
         System.out.println("Gelen Veri: " + alien);
         this.alienRepo.insert(new Alien(alien));
+    }
+
+    @PUT
+    public void updateAlien(Alien alien) {
+        System.out.println("Gelen Veri: " + alien);
+        this.alienRepo.update(new Alien(alien));
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public void deleteAlien(@PathParam("id") Integer id) {
+        System.out.println("Gelen Veri: " + id);
+        this.alienRepo.delete(id);
     }
 }
