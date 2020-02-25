@@ -5,6 +5,7 @@ import com.company.repository.AlienRepo;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -18,14 +19,19 @@ public class AlienResource {
     }
 
     @GET
-    public List<Alien> getAliens() {
-        return alienRepo.getAliens();
+    public Response getAliens() {
+        List<Alien> aliens = alienRepo.getAliens();
+        return Response.status(200).entity(aliens).build();
     }
 
     @GET
     @Path("/{id}")
-    public Alien getAlien(@PathParam("id") Integer id) {
-        return alienRepo.getById(id);
+    public Response getAlien(@PathParam("id") Integer id) {
+        Alien alien = alienRepo.getById(id);
+        if (!alien.getId().equals(0))
+            return Response.status(200).entity(alien).build();
+        else
+            return Response.status(404).entity(null).build();
     }
 
     @POST
