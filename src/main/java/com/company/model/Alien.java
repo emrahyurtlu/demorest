@@ -61,6 +61,13 @@ public class Alien {
         this.point = point;
     }
 
+    /*
+    * Burada herhangi bir kolonun başında
+    * @Transient anotsayonu kullanılırsa,
+    * yazılım tarafında kullanılıp vt ye yazılmayacak
+    * anlamına gelmektedir.
+    * */
+
     @Override
     public String toString() {
         return "Alien{" +
