@@ -1,4 +1,4 @@
-package com.company.writer;
+package com.company.custom;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;

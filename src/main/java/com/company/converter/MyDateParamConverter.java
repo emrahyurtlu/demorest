@@ -11,6 +11,10 @@ import java.util.Calendar;
 
 @Provider
 public class MyDateParamConverter implements ParamConverterProvider {
+    /*
+    * MyDateParamConverter @PathParam ile yakaladığımız değeri
+    * istediğimiz tipe çevirmemizi sağladı.
+    * */
     @Override
     public <T> ParamConverter<T> getConverter(Class<T> rawType, Type genericType, Annotation[] annotations) {
         if (rawType.getName().equals(MyDate.class.getName())){
