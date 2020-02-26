@@ -1,11 +1,21 @@
 package com.company.model;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
+@Entity
+@Table(name = "aliens")
 public class Alien {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "name", length = 100)
     private String name;
+
+    @Column(name = "point")
     private Integer point;
 
     public Alien() {

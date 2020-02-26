@@ -2,6 +2,9 @@ package com.company.resource;
 
 import com.company.model.Alien;
 import com.company.repository.AlienRepo;
+import com.company.util.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -12,6 +15,7 @@ import java.util.List;
 @Path("aliens")
 @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 public class AlienResource {
+    private final Session _session = HibernateUtil.openSession();
     private AlienRepo alienRepo;
 
     public AlienResource() throws SQLException, ClassNotFoundException {
@@ -26,8 +30,9 @@ public class AlienResource {
 
     @GET
     @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getAlien(@PathParam("id") Integer id) {
-        Alien alien = alienRepo.getById(id);
+        Alien alien = _session.get(Alien.class, id);
         if (!alien.getId().equals(0))
             return Response.status(200).entity(alien).build();
         else
@@ -37,19 +42,26 @@ public class AlienResource {
     @POST
     public void insertAlien(Alien alien) {
         System.out.println("Gelen Veri: " + alien);
-        this.alienRepo.insert(new Alien(alien));
+        Transaction transaction = _session.beginTransaction();
+        _session.save(alien);
+        transaction.commit();
     }
 
     @PUT
     public void updateAlien(Alien alien) {
         System.out.println("Gelen Veri: " + alien);
-        this.alienRepo.update(new Alien(alien));
+        Transaction transaction = _session.beginTransaction();
+        _session.update(alien);
+        transaction.commit();
     }
 
     @DELETE
     @Path("/{id}")
     public void deleteAlien(@PathParam("id") Integer id) {
         System.out.println("Gelen Veri: " + id);
-        this.alienRepo.delete(id);
+        Alien alien = _session.get(Alien.class, id);
+        Transaction transaction = _session.beginTransaction();
+        _session.delete(alien);
+        transaction.commit();
     }
 }

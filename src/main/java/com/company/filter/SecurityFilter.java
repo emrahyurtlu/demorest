@@ -21,7 +21,8 @@ public class SecurityFilter implements ContainerRequestFilter {
      * */
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
-        List<String> authHeader = requestContext.getHeaders().get(AUTHORIZATION_HEADER);
+        //return;
+        /*List<String> authHeader = requestContext.getHeaders().get(AUTHORIZATION_HEADER);
         if (authHeader != null && authHeader.size() > 0) {
             String authToken = authHeader.get(0);
             authToken = authToken.replace(AUTHORIZATION_HEADER_PREFIX, "");
@@ -41,6 +42,6 @@ public class SecurityFilter implements ContainerRequestFilter {
         }
 
         Response authErrorResponse = Response.status(Response.Status.UNAUTHORIZED).entity("Wrong auht info").build();
-        requestContext.abortWith(authErrorResponse);
+        requestContext.abortWith(authErrorResponse);*/
     }
 }

@@ -14,7 +14,6 @@ public class PoweredByResponseFilter implements ContainerResponseFilter {
     @Override
     public void filter(ContainerRequestContext requestContext,
                        ContainerResponseContext responseContext) throws IOException {
-        responseContext.getHeaders().add("X-Powered-By", "Java Jax-Rs Framework");
-
+        //responseContext.getHeaders().add("X-Powered-By", "Java Jax-Rs Framework");
     }
 }

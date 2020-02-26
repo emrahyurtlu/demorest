@@ -9,6 +9,6 @@ import java.io.IOException;
 public class LoggingFilter implements ContainerRequestFilter {
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
-        System.out.println("--- Request ---");
+        // System.out.println("--- Request ---");
     }
 }
