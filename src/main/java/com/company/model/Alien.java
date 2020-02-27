@@ -71,6 +71,12 @@ public class Alien {
      * @Transient anotsayonu kullanılırsa,
      * yazılım tarafında kullanılıp vt ye yazılmayacak
      * anlamına gelmektedir.
+     *
+     * @ElementCollection kullanılıyorsa,
+     * entity ye ait olak bir liste ile işlem yapılacaktır.
+     * Örn: User ve UserAddress tabloları olsun
+     * User nesnesinin içinde Set<UserAddress> addressList
+     * olması durumlarda kullanılır.
      * */
 
     @Override

@@ -19,11 +19,15 @@ public class AlienRepo {
     public List<Alien> getAliens() {
         Query query = _session.createQuery("from Alien");
         query.setCacheable(true);
-        this.aliens = (List<Alien>) query.getResultList();
+        this.aliens = query.list();
         return this.aliens;
     }
 
     public Alien getById(Integer alienId) {
+        // Parametre geçilerek çalıştırılan HQL sorgusu
+        /*Query query = _session.createQuery("from Alien  where id= :alienId").setParameter("alienId", alienId);
+        Alien alien = (Alien) query.uniqueResult();
+        return alien;*/
         return _session.get(Alien.class, alienId);
     }
 

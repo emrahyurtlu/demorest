@@ -7,10 +7,6 @@ import javax.ws.rs.core.Application;
 @ApplicationPath("/api")
 public class MyApp extends Application {
 
-    public void start() {
-        System.out.println("Project is Started!");
-    }
-
     /*
     *
     * Uygulama çalıştığında @Path anotasyonuna sahip sınıfları bulur ve resource olarak dışarıya açar.
