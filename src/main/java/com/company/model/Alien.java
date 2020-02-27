@@ -1,11 +1,16 @@
 package com.company.model;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
 @Table(name = "aliens")
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Alien {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,11 +67,11 @@ public class Alien {
     }
 
     /*
-    * Burada herhangi bir kolonun başında
-    * @Transient anotsayonu kullanılırsa,
-    * yazılım tarafında kullanılıp vt ye yazılmayacak
-    * anlamına gelmektedir.
-    * */
+     * Burada herhangi bir kolonun başında
+     * @Transient anotsayonu kullanılırsa,
+     * yazılım tarafında kullanılıp vt ye yazılmayacak
+     * anlamına gelmektedir.
+     * */
 
     @Override
     public String toString() {

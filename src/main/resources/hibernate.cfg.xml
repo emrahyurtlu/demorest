@@ -14,6 +14,9 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.connection.pool_size">5</property>
         <property name="current_session_context_class">thread</property>
-        <mapping class="com.company.model.Alien" />
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>
+        <property name="hibernate.cache.use_query_cache">true</property>
+        <mapping class="com.company.model.Alien"/>
     </session-factory>
 </hibernate-configuration>
